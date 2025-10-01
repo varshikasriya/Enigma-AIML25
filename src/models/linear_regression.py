@@ -12,7 +12,7 @@ class LinearRegression(BaseModel):
         out_features: int,
         bias_term: bool = True,
     ) -> None:
-        super().__init__(_forward_has_training_logic=True)
+        super().__init__(_forward_has_training_logic=False)
         self.in_features = in_features
         self.out_features = out_features
         self.bias_term = bias_term
