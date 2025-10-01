@@ -116,3 +116,75 @@ def load_and_split(
         return split_chunks
     
     return split_data(loader, ratios, seed)  # default data load
+
+class EndOfDataLoader(Exception):
+        """Custom exception to signal DataLoader reset without termination."""
+        # logic to handle reset can be implemented in the training loop
+        pass
+
+class DataLoader:
+    """A simple DataLoader for numpy arrays."""
+    def __init__(
+        self,
+        data: np.ndarray,
+        batch_size: int,
+        shuffle: bool = True,
+    ) -> None:
+        """
+        Initializes the DataLoader.
+
+        Args:
+            data (np.ndarray): The dataset.
+            batch_size (int): Number of samples per batch.
+            shuffle (bool): Whether to shuffle data at the start of each epoch.
+        Returns:
+            None
+        """
+        self.data = data
+        self.batch_size = batch_size
+        self.shuffle = shuffle
+        
+        self.n = len(data)
+        self.indices = np.arange(self.n)
+        self.current_idx = 0
+        
+        if self.shuffle:
+            np.random.shuffle(self.indices)
+    
+    def __getitem__(self, idx):
+        if idx < 0 or idx >= len(self):
+            raise IndexError("Index out of range")
+        
+        start = idx * self.batch_size
+        end = min(start + self.batch_size, self.n)
+        batch_indices = self.indices[start:end]
+        
+        return self.data[batch_indices]
+
+    def __iter__(self):
+        self.current_idx = 0
+        if self.shuffle:
+            np.random.shuffle(self.indices)
+        
+        return self
+    
+    def __next__(self):
+        if self.current_idx >= self.n:
+            raise EndOfDataLoader
+        batch_indices = self.indices[self.current_idx:self.current_idx + self.batch_size]
+        batch = self.data[batch_indices]
+        self.current_idx += self.batch_size
+        
+        return batch
+    
+    def __len__(self):
+        return (self.n + self.batch_size - 1) // self.batch_size
+    
+    def reset(self):
+        """
+        Resets the DataLoader for a new epoch.
+        The current index is set to 0 and data is reshuffled if shuffle is True
+        """
+        self.current_idx = 0
+        if self.shuffle:
+            np.random.shuffle(self.indices)
