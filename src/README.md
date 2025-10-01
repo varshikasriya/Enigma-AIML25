@@ -41,7 +41,7 @@ python -m src.serving_prep.inference --model artifacts/best.pkl --input samples/
 
 This is the thorough breakdown of the repo structure, features, and logic. This will provide a nice starting point for someone new to this repo, and understand what goes where.
 
-## `src/data`
+## **`src/data`**
 
 All data-related work goes here: loading, processing, storing, and more.
 
@@ -53,7 +53,7 @@ All data-related work goes here: loading, processing, storing, and more.
 
 > Often, buggy models are a result of logical bugs in this layer ;)
 
-## `src/models`
+## **`src/models`**
 
 All model related work goes here.
 
@@ -73,7 +73,7 @@ class BaseModel:
 
 Since model API and training are tightly linked, you will have to make sure that any model instance is compatible with `training.trainer`. You may have to make adapters for torch models in training.trainer.py, while BaseModel is plug-and-play.
 
-## `src/training`
+## **`src/training`**
 
 **`training/trainer.py`**: all training code for `torch` and `base-model` instances. There are 2 functions, one for training numpy-models (`BaseModel` child instance) and torch-models (`nn.Module` child instance). The trainer must log all data from a train run into `src/runs`.
 
