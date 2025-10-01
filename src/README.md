@@ -61,8 +61,7 @@ All models are expected to expose a simple, consistent API:
 
 ```python
 class BaseModel:
-    def fit(self, X, y): ...          # train model
-    def predict(self, X): ...         # predict
+    def forward(self, Xb, yb): ...    # train or inference model
     def save(self, f_path: str): ...  # save model to path (.pkl or .pth)
     @classmethod
     def load(cls, f_path: str): ...   # load model from path (.pkl or .pth)
