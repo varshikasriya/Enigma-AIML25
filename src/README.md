@@ -41,7 +41,7 @@ python -m src.serving_prep.inference --model artifacts/best.pkl --input samples/
 
 This is the thorough breakdown of the repo structure, features, and logic. This will provide a nice starting point for someone new to this repo, and understand what goes where.
 
-### `src/data`
+## `src/data`
 
 All data-related work goes here: loading, processing, storing, and more.
 
@@ -53,7 +53,7 @@ All data-related work goes here: loading, processing, storing, and more.
 
 > Often, buggy models are a result of logical bugs in this layer ;)
 
-### `src/models`
+## `src/models`
 
 All model related work goes here.
 
@@ -73,7 +73,7 @@ class BaseModel:
 
 Since model API and training are tightly linked, you will have to make sure that any model instance is compatible with `training.trainer`. You may have to make adapters for torch models in training.trainer.py, while BaseModel is plug-and-play.
 
-### `src/training`
+## `src/training`
 
 **`training/trainer.py`**: all training code for `torch` and `base-model` instances. There are 2 functions, one for training numpy-models (`BaseModel` child instance) and torch-models (`nn.Module` child instance). The trainer must log all data from a train run into `src/runs`.
 
@@ -83,7 +83,7 @@ Since model API and training are tightly linked, you will have to make sure that
 
 Once model training is complete, all artifacts (logs, plots, weights) are written into a timestamped `runs/<date_time>/` directory.
 
-### **`src/experiments`**
+## **`src/experiments`**
 
 All experiments are config-driven, that is, you make one config file that defines which: model, dataset, split, learning-rate, experiment-name, etc are used. The config file is then loaded into `run_experiment` to... run it, and log all information. Finally, based on config-save settings, all artifacts are stored in `src/runs/<datetime>/`.
 
@@ -153,12 +153,12 @@ Example config file (`configs/dummy-experiment-for-demo.json`):
 python -m src.experiments.run_experiment --config src/experiments/configs/dummy-experiment-for-demo.json
 ```
 
-**`src/runs/`**
+## **`src/runs/`**
 
 All experiment artifacts are stored in `src/runs/<date_time>/`.\
 This includes: `results.json` (metrics), `model.pth`/`model.pkl` (weights), `plots/` (visualizations).
 
-**`src/serving_prep`**
+## **`src/serving_prep`**
 
 All code related to exporting and inference goes here.
 
