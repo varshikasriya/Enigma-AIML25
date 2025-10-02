@@ -100,14 +100,69 @@ Goal: Build real-world OSS skills by proposing + solving impactful issues.
 
 ## Contribution Guide
 
-1. Fork the repo
-2. Pick a level and task/issue to work on
-3. Clone the repo to local
-4. Make your changes
-   1. For levels 1/2, make your own dir: `github-username/` and place your code in that dir ONLY
-   2. For levels 3/4, you may go to `src/`
-5. Commit your changes
-   1. Name your commit so that it's meaningful and PG-13
-   2. Add a description to the commit if you think its needed
-6. Open a PR with a clear description of what you did, how, etc. You must credit all sources that you have used to make said changes.
-7. Wait till merge or review
+Here’s a simple guide to get you started, from forking the repo to making your first contribution:
+
+1. **Fork this repo**
+   - Click the **Fork** button in the top-right corner of this page.
+   - This creates a copy of the repo under your GitHub account.
+   > If you're new to GitHub, this is like cloning the repo on GitHub. So you have now created a new copy of the same repo on GitHub.
+
+2. **Clone your fork locally**\
+   This brings your fork from GitHub down to your computer so you can make changes, run code, etc.
+
+   ```bash
+   git clone https://github.com/<your-username>/HacktoberFest25_AIML.git
+   cd HacktoberFest25_AIML
+   ```
+
+3. **Create new branch**\
+   Branches help keep changes organized and PRs cleaner.
+
+   ```bash
+   git checkout -b my-branch-name
+   ```
+
+4. **Pick a level and make changes**
+   - For levels 1/2, create a folder with your GitHub username (in the respective level's folder) and add your files there.
+   - If your working on `issues` (levels 3/4), work inside the `src/` directory (or wherever the issue specifies).
+
+5. **Stage and commit your changes**\
+   Move to the project’s root directory (`HacktoberFest25_AIML`) and run.
+
+   ```bash
+   git add .
+   git commit -m "Added sigmoid, ReLU, tanh functions"
+   ```
+
+   > Replace the commit message with something meaningful about your changes.
+
+6. **Push changes to your fork**\
+   Now that you have completed all your work locally, push local changes to the remote repository (on GitHub) by running:
+
+   ```bash
+   git push origin my-branch-name
+   ```
+
+7. **Open a Pull Request (PR)**
+   - Go to your fork on GitHub
+   - Click Compare and pull request
+   - Provide a clear description of what you implemented, fixed, or improved
+   - Submit the PR to the main repo
+
+8. Engage in review
+   - Maintainers may suggest changes. Update your PR by pushing new commits to the same branch
+   - Once approved, your PR will be merged
+
+## Quick tips
+
+1. Keep your PRs focused (one feature/fix per PR).
+2. Use meaningful commit messages.
+3. Always sync your fork with the upstream repo before starting new work:
+
+```bash
+git remote add upstream https://github.com/<maintainer-username>/Hacktoberfest-AIML.git
+git fetch upstream
+git merge upstream/main
+```
+
+> You may also want to sync your fork on GitHub frequently, keeping your fork up-to-date with the main repo. This will reduce the chance of merge conflicts, trust me, you want to avoid em...
