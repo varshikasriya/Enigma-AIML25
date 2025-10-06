@@ -1,11 +1,9 @@
-# Hacktoberfest AIML
+# Enigma-AIML25
 
-Welcome to the **Hacktoberfest AIML**.\
+Welcome to the **Enigma-AIML25**.\
 This repo is designed for participants of all skill levels to **learn, contribute, and collaborate** on AI/ML projects.
 
 The tasks are broken down into chunks to suit all levels of difficulty. Tasks in Levels 1/2 are a good starting point if you're getting started with git/GitHub. Once you're familiar with contributing to a repo, you may start by solving active issues in the 'issues' tab. For more experienced folks, you can review the source code, find issues, submit an issue, propose a solution, and try solving it.
-
-If you're participating in Hacktoberfest, please remember that **only accepted (merged) Pull Requests (PRs) count as valid contributions** opening issues alone will not count. All PRs should include a clear explanation of your proposed solution. Reviewers may provide feedback or request changes; please respond to these comments and update your PR as needed to ensure it can be merged smoothly. Constructive discussion is encouraged if you disagree with a review.
 
 ---
 
@@ -111,8 +109,8 @@ Here’s a simple guide to get you started, from forking the repo to making your
    This brings your fork from GitHub down to your computer so you can make changes, run code, etc.
 
    ```bash
-   git clone https://github.com/<your-username>/HacktoberFest25_AIML.git
-   cd HacktoberFest25_AIML
+   git clone https://github.com/<your-username>/Enigma-AIML25.git
+   cd Enigma-AIML25
    ```
 
 3. **Create new branch**\
@@ -127,7 +125,7 @@ Here’s a simple guide to get you started, from forking the repo to making your
    - If your working on `issues` (levels 3/4), work inside the `src/` directory (or wherever the issue specifies).
 
 5. **Stage and commit your changes**\
-   Move to the project’s root directory (`HacktoberFest25_AIML`) and run.
+   Move to the project’s root directory (`Enigma-AIML25`) and run.
 
    ```bash
    git add .
@@ -160,7 +158,7 @@ Here’s a simple guide to get you started, from forking the repo to making your
 3. Always sync your fork with the upstream repo before starting new work:
 
 ```bash
-git remote add upstream https://github.com/<maintainer-username>/Hacktoberfest-AIML.git
+git remote add upstream https://github.com/<maintainer-username>/Enigma-AIML25.git
 git fetch upstream
 git merge upstream/main
 ```
