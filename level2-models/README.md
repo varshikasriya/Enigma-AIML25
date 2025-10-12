@@ -12,17 +12,19 @@ In this stage, you will implement and experiment with **basic ML and traditional
 
 1. Implement **Linear Regression** (using Gradient Descent).
 2. Implement a **Perceptron** for binary classification.
-3. Compare both models on the dataset provided in: `datasets/binary_classification.csv`
-4. Log the following metrics for both models:
+3. Compare both models on the both datasets provided in: `datasets`
+4. Log the following metrics for both models **and both datasets**:
    - Accuracy
    - Time to convergence
    - Time per prediction
    > You are expected to save these metrics in some format, like: JSON, CSV, etc. This way, you can perform the next step (analysis) very easily.
 
+The goal is to understand how each model performs on **linearly separable** and **non-linearly separable** data.
+
 ### Analysis
 
 1. Once complete, create a new file (called `analysis.md` or `analysis.txt`) with your results.
-2. Then, try to explain/theorize why one model performed better/worse than the other.
+2. Then, try to explain/theorize why one model performed better/worse than the other on both datasets.
 
 This task is designed to build your **critical thinking skills** and strengthen your ability to connect **theory with practice**.\
 Don’t just report the numbers, reflect on *why* the results turned out the way they did.
@@ -67,7 +69,7 @@ This way, we can keep track of every contributor's work easily, all in one place
   - `predict(X)`
   - or similar, just keep it consistent for all your work
 - [ ] Write a comparison script (`compare.py`) that:
-  - Loads the dataset from `datasets/binary_classification.csv`
+  - Loads the both datasets from `datasets`
   - Trains both models
   - Logs required metrics
 - [ ] Create an `analysis.md` or `analysis.txt` file with your explanations
