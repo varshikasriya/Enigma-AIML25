@@ -1,0 +1,12 @@
+{
+    "LinearRegression": {
+        "Accuracy": 1.0,
+        "Time_to_convergence": 0.0035812854766845703,
+        "Time_per_prediction": 8.690357208251953e-05
+    },
+    "Perceptron": {
+        "Accuracy": 1.0,
+        "Time_to_convergence": 0.013916254043579102,
+        "Time_per_prediction": 1.9073486328125e-06
+    }
+}
