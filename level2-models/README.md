@@ -19,15 +19,15 @@ In this stage, you will implement and experiment with **basic ML and traditional
    - Time per prediction
    > You are expected to save these metrics in some format, like: JSON, CSV, etc. This way, you can perform the next step (analysis) very easily.
 
-The goal is to understand how each model performs on **linearly separable** and **non-linearly separable** data.
-
 ### Analysis
 
 1. Once complete, create a new file (called `analysis.md` or `analysis.txt`) with your results.
-2. Then, try to explain/theorize why one model performed better/worse than the other on both datasets.
+2. Then, try to explain/theorize why one model performed better/worse than the other on **both datasets**.
 
 This task is designed to build your **critical thinking skills** and strengthen your ability to connect **theory with practice**.\
 Don’t just report the numbers, reflect on *why* the results turned out the way they did.
+
+The goal is to understand how and why each model performs on **linearly separable** and **non-linearly separable** data.
 
 ### (Optional) Traditional AI
 
