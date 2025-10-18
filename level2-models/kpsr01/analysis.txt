@@ -1,0 +1,23 @@
+MODEL PERFORMANCE ANALYSIS
+==========================
+
+MODELS COMPARED:
+1. Linear Regression (with gradient descent)
+2. Perceptron
+
+DATASETS TESTED:
+1. binary_classification.csv - Linearly separable data
+2. binary_classification_non_lin.csv - Non-linearly separable data
+
+RESULTS:
+Linear Regression: 87.17% accuracy on linear data, 79.13% on non-linear data
+Perceptron: 84.33% accuracy on linear data, 79.63% on non-linear data
+
+
+WHY LINEAR REGRESSION WAS BETTER ON LINEAR DATA:
+Linear Regression performed significantly better on linearly separable data because it uses batch gradient descent, which looks at all data points simultaneously to update weights. This approach gives it a smoother path to finding the optimal decision boundary. Additionally, it was 69x faster because batch operations are more efficient than the Perceptron's point-by-point weight updates. The continuous output of Linear Regression also allows it to model the gradual transition between classes more accurately, resulting in a better-fit decision boundary for linear patterns.
+
+WHY PERCEPTRON WAS SLIGHTLY BETTER ON NON-LINEAR DATA:
+
+The Perceptron showed a marginal advantage on non-linear data, though the difference is minimal. This slight edge comes from its point-by-point learning approach, which updates weights based on individual misclassifications. This makes it slightly more adaptive to irregular patterns and outliers in non-linear data. However, both models struggled equally on this dataset, indicating that neither is well-suited for non-linear problems.
+
