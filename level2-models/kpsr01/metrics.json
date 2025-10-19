@@ -1,0 +1,34 @@
+[
+  {
+    "model": "Linear Regression",
+    "dataset": "binary_classification",
+    "accuracy": 0.8716666666666667,
+    "time_to_convergence": 0.015590429306030273,
+    "iterations_to_converge": 993,
+    "time_per_prediction": 0.0
+  },
+  {
+    "model": "Perceptron",
+    "dataset": "binary_classification",
+    "accuracy": 0.8433333333333334,
+    "time_to_convergence": 1.0756995677947998,
+    "iterations_to_converge": 1000,
+    "time_per_prediction": 0.0
+  },
+  {
+    "model": "Linear Regression",
+    "dataset": "binary_classification_non_lin",
+    "accuracy": 0.79125,
+    "time_to_convergence": 0.023914813995361328,
+    "iterations_to_converge": 834,
+    "time_per_prediction": 0.0
+  },
+  {
+    "model": "Perceptron",
+    "dataset": "binary_classification_non_lin",
+    "accuracy": 0.79625,
+    "time_to_convergence": 1.7119719982147217,
+    "iterations_to_converge": 1000,
+    "time_per_prediction": 0.0
+  }
+]
