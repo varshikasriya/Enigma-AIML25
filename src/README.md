@@ -1,19 +1,19 @@
 # AIML Pipeline (src)
 
-Welcome to source, this directory mirrors a real world ML workflow, up to 'ready to ship'.\
-Here we will take some data, process, train, evaluate, export, and inference on models.\
-(Deployment infra is out of scope for this project.)
+Welcome to source — this directory mirrors a real-world ML workflow up to 'ready to ship'.\
+Here we will take some data, process it, train, evaluate, export, and perform inference on models.\
+(Deployment infrastructure is out of scope for this project.)
 
-> If you’re working on Level 3/4, start exploring code in this dir.
+> If you're working on Level 3/4, start exploring code in this directory.
 > Level 1/2 contributor's work will be promoted into these modules via PRs.
 
 ---
 
 ## Getting started
 
-Once you have cloned the repo, you may try running the following commands on the terminal while at the root of the project. If you have an env and/or the deps already setup, you can ignore steps 1 and 2 below.
+Once you have cloned the repo, try running the following commands in a terminal while at the root of the project. If you already have an environment and the dependencies set up, you can ignore steps 1 and 2 below.
 
-Try running steps 3, 4, and 5. These are supposed to work if you have setup the project properly (there is no buggy code here). If you are facing issues here, please open an [issue](https://github.com/Dristro/HacktoberFest25_AIML/issues) and one of the repo's maintainers will assist you. However, you are encouraged to explore and try to fix the problem yourself.
+Try running steps 3, 4, and 5. These are supposed to work if you have set up the project properly (there is no buggy code here). If you face issues, please open an [issue](https://github.com/Dristro/HacktoberFest25_AIML/issues) and one of the repository's maintainers will assist you. However, you are encouraged to explore and try to fix the problem yourself.
 
 ```bash
 # 1) Create/activate a virtual env (optional but recommended)
@@ -45,11 +45,11 @@ This is the thorough breakdown of the repo structure, features, and logic. This 
 
 All data-related work goes here: loading, processing, storing, and more.
 
-**`data/loaders.py`**: will be used to load data from some `.csv` file, split it and return the data in a nice, readable format.
+**`data/loaders.py`**: used to load data from a `.csv` file, split it, and return the data in a nice, readable format.
 
-**`data/preprocessing.py`**: functions like `normalize`, `standard`, `compose` will go here. Once `augment.py` is up and running, functionality from augment.py will also be included in preprocessing.py.
+**`data/preprocessing.py`**: functions like `normalize`, `standard`, and `compose` will go here. Once `augment.py` is up and running, functionality from augment.py will also be included in preprocessing.py.
 
-**`data/augment.py`** (work in progress): all data-augmentation functions go here. Functions like: resize-image, shuffle-samples, noise injection, color jittering, etc.
+**`data/augment.py`** (work in progress): all data-augmentation functions go here. Functions include resize-image, shuffle-samples, noise injection, color jittering, etc.
 
 > Often, buggy models are a result of logical bugs in this layer ;)
 
@@ -67,18 +67,18 @@ class BaseModel:
     def load(cls, f_path: str): ...   # load model from path (.pkl or .pth)
 ```
 
-> Note that torch models are expected to retain their API.
+> Note that Torch models are expected to retain their API.
 > Our project will/should be compatible with both `BaseModel` and `nn.Module`.
 
 Since model API and training are tightly linked, you will have to make sure that any model instance is compatible with `training.trainer`. You may have to make adapters for torch models in training.trainer.py, while BaseModel is plug-and-play.
 
 ## **`src/training`**
 
-**`training/trainer.py`**: all training code for `torch` and `base-model` instances. There are 2 functions, one for training numpy-models (`BaseModel` child instance) and torch-models (`nn.Module` child instance). The trainer must log all data from a train run into `src/runs`.
+**`training/trainer.py`**: all training code for `torch` and `base-model` instances. There are two functions: one for training NumPy models (a `BaseModel` subclass) and one for training Torch models (an `nn.Module` subclass). The trainer must log all data from a training run into `src/runs`.
 
-**`training/metrics.py`**: all evaluation metrics for the models. Following metrics are supported: accuracy, precision, recall, f1, roc-auc. More will be added soon (contributors' help needed here).
+**`training/metrics.py`**: all evaluation metrics for the models. Following metrics are supported: accuracy, precision, recall, F1, ROC-AUC. More will be added soon (contributors' help needed here).
 
-**`training/visualize.py`**: plot utils. Once a model is created and trained, we can use the visualization utils in `training/visualize.py`.
+**`training/visualize.py`**: plotting utilities. Once a model is created and trained, we can use the visualization utilities in `training/visualize.py`.
 
 Once model training is complete, all artifacts (logs, plots, weights) are written into a timestamped `runs/<date_time>/` directory.
 
@@ -154,8 +154,7 @@ python -m src.experiments.run_experiment --config src/experiments/configs/dummy-
 
 ## **`src/runs/`**
 
-All experiment artifacts are stored in `src/runs/<date_time>/`.\
-This includes: `results.json` (metrics), `model.pth`/`model.pkl` (weights), `plots/` (visualizations).
+All experiment artifacts are stored in `src/runs/<date_time>/`. This includes: `results.json` (metrics), `model.pth`/`model.pkl` (weights), `plots/` (visualizations).
 
 ## **`src/serving_prep`**
 
@@ -169,7 +168,7 @@ All code related to exporting and inference goes here.
 python -m src.serving_prep.export --run_dir runs/YYYY-MM-DD-HH-MM --format pickle
 ```
 
-**`serving_prep/inference.py`**: loads exported model and runs batch/single prediction.
+**`serving_prep/inference.py`**: loads an exported model and runs batch/single prediction.
 
 ```bash
 python -m src.serving_prep.inference   --model artifacts/best.pkl   --input samples/batch.csv   --output predictions.csv
@@ -199,14 +198,14 @@ python -m src.cli.main predict --model artifacts/best.pkl --input samples/batch.
 
 ## Common Level-3 Bug Themes (and where to look)
 
-All bugs found in the repo will be found in the issues section. Here are some common themes and where to look:
+All bugs found in the repo should be reported in the issues section. Here are some common themes and where to look:
 
 - **Normalization is wrong** (L1 vs L2, wrong axis) in `data/preprocessing.py`
 - **Matrix shape errors** (e.g., `(N,1)` vs `(N,)`, bad transpose) in `models/*`, `training/trainer.py`
 - **Torch issues** (dtype/device/batch) in `models/torch_mlp.py`, `training/trainer.py`
 - **Documentation drift** (README logs outdated) update run artifacts + docs
 
-Each bug should be paired with/validated by a failing test in `tests/` (where applicable).
+Each bug should be paired with and validated by a failing test in `tests/` (where applicable).
 
 ---
 
@@ -214,13 +213,13 @@ Each bug should be paired with/validated by a failing test in `tests/` (where ap
 
 You are expected to follow these conventions when contributing to keep the codebase consistent:
 
-- **Typing**: Prefer type hints using python's `typing` module.
+- **Typing**: Prefer type hints using Python's `typing` module.
 - **Docstrings**: Google style (see existing code).
 - **Tests**: Use `pytest` in `tests/` folder. Name test files `test_*.py`.
 - **Dependencies**: Use only those in `requirements.txt` (or add new ones via PR).
-- **Reproducibility**: Set seeds in data split and trainers.
+- **Reproducibility**: Set seeds in data splits and trainers.
 
-**Base model pattern** (numpy):
+**Base model pattern** (NumPy):
 
 ```python
 class NumpyBinaryClassifier(BaseModel):
@@ -266,14 +265,14 @@ class NumpyBinaryClassifier(BaseModel):
 
 ---
 
-## What 'Ready to Ship' Means Here
+## What "Ready to Ship" Means Here
 
 - A trained model exists in `runs/<...>`
 - An exported artifact exists in `artifacts/` (or inside run dir)
 - `inference.py` can load it and produce correct predictions against a **validated schema**
 - Metrics & plots retained for auditability (in `runs/`)
 
-From here, you could containerize or wire a FastAPI server—but that’s outside the scope of this repo.
+From here, you could containerize or wire a FastAPI server — but that's outside the scope of this repo.
 
 ---
 
