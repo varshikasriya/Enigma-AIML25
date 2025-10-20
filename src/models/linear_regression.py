@@ -64,8 +64,13 @@ class LinearRegression(BaseModel):
             self.weights = np.random.randn(self.out_features, self.in_features)
         if self.bias_term and self.bias is None:
             self.bias = np.zeros(self.out_features)
+        y_pred = Xb @ self.weights.T
+        if self.bias_term:
+            y_pred += self.bias
 
         out = {}  # return dict
+        out["y_pred"] = y_pred
+
         if self._training:
             # training logic here, like:
             # weight init and bias init (if bias_term is True)
