@@ -1,0 +1,33 @@
+============================================================
+Dataset: binary_classification_linear
+============================================================
+Loaded 600 samples with 2 features
+
+Training Linear Regression (SGD) on binary_classification_linear
+  Accuracy: 0.8700
+  Time to convergence: 0.5617 seconds
+  Iterations: 407
+  Time per prediction: 0.000000 seconds
+
+Training Perceptron on binary_classification_linear
+  Accuracy: 0.8433
+  Time to convergence: 0.7124 seconds
+  Iterations: 1000
+  Time per prediction: 0.000000 seconds
+
+============================================================
+Dataset: binary_classification_non_lin
+============================================================
+Loaded 800 samples with 2 features
+
+Training Linear Regression (SGD) on binary_classification_non_lin
+  Accuracy: 0.7975
+  Time to convergence: 1.4282 seconds
+  Iterations: 787
+  Time per prediction: 0.000000 seconds
+
+Training Perceptron on binary_classification_non_lin
+  Accuracy: 0.7963
+  Time to convergence: 1.0802 seconds
+  Iterations: 1000
+  Time per prediction: 0.000000 seconds
