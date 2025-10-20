@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 import os
 
 
-# 1. Linear Regression with Gradient Descent
 class LinearRegressionGD:
     def __init__(self, learning_rate=0.01, num_iterations=1000):
         self.learning_rate = learning_rate
@@ -36,42 +35,46 @@ class LinearRegressionGD:
         accuracy = accuracy_score(y, np.round(predictions))
         return accuracy
 
-# 2. Perceptron
+
 class Perceptron:
     def __init__(self, learning_rate=0.1, num_iterations=1000):
         self.learning_rate = learning_rate
         self.num_iterations = num_iterations
-    
+
     def fit(self, X, y):
         self.weights = np.zeros(X.shape[1])
         self.bias = 0
         start_time = time.time()
-        
+
         for _ in range(self.num_iterations):
             for i in range(len(X)):
-                prediction = np.dot(X[i], self.weights) + self.bias
-                if y[i] * prediction <= 0:
-                    self.weights += self.learning_rate * y[i] * X[i]
-                    self.bias += self.learning_rate * y[i]
-        
+                prediction = self._predict_raw(X[i])
+                predicted_label = 1 if prediction >= 0 else 0
+                update = y[i] - predicted_label
+                self.weights += self.learning_rate * update * X[i]
+                self.bias += self.learning_rate * update
+
         self.time_to_convergence = time.time() - start_time
-    
+
+    def _predict_raw(self, x):
+        return np.dot(x, self.weights) + self.bias
+
     def predict(self, X):
-        return np.sign(np.dot(X, self.weights) + self.bias)
-    
+        return np.where(self._predict_raw(X) >= 0, 1, 0)
+
     def score(self, X, y):
         predictions = self.predict(X)
         accuracy = accuracy_score(y, predictions)
         return accuracy
 
-# 3. Load Data (assuming data is in CSV format)
+
 def load_data(file_path):
     data = pd.read_csv(file_path)
-    X = data.iloc[:, :-1].values  # features
-    y = data.iloc[:, -1].values  # target
+    X = data.iloc[:, :-1].values
+    y = data.iloc[:, -1].values
     return X, y
 
-# 4. Evaluate models and log metrics
+
 def evaluate_model(model, X, y, dataset_name):
     start_time_per_prediction = time.time()
     model.fit(X, y)
@@ -92,14 +95,14 @@ def evaluate_model(model, X, y, dataset_name):
 def plot_decision_boundary(model, X, y, title, filename):
     x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-    h = 0.01  # step size in the mesh
+    h = 0.01
 
     xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
                          np.arange(y_min, y_max, h))
     grid = np.c_[xx.ravel(), yy.ravel()]
     if isinstance(model, LinearRegressionGD):
         Z = np.round(model.predict(grid))
-    else:  # Perceptron
+    else:
         Z = model.predict(grid)
 
     Z = Z.reshape(xx.shape)
@@ -113,25 +116,20 @@ def plot_decision_boundary(model, X, y, title, filename):
     plt.legend(*scatter.legend_elements(), title="Classes")
     plt.grid(True)
     
-    # Create output folder if it doesn't exist
     os.makedirs("plots", exist_ok=True)
     plt.savefig(f"plots/{filename}")
     plt.close()
 
 
-# Example of running this code on two datasets
 dataset1 = r"C:\Personal\Code\Hacktober25\Enigma-AIML25\level2-models\datasets\binary_classification.csv"
 dataset2 = r"C:\Personal\Code\Hacktober25\Enigma-AIML25\level2-models\datasets\binary_classification_non_lin.csv"
 
-# Load datasets
 X1, y1 = load_data(dataset1)
 X2, y2 = load_data(dataset2)
 
-# Initialize models
 linear_regression = LinearRegressionGD()
 perceptron = Perceptron()
 
-# Evaluate models
 linear_regression_metrics_1 = evaluate_model(linear_regression, X1, y1, "dataset1_linear_regression")
 perceptron_metrics_1 = evaluate_model(perceptron, X1, y1, "dataset1_perceptron")
 
@@ -144,7 +142,6 @@ perceptron_metrics_2 = evaluate_model(perceptron, X2, y2, "dataset2_perceptron")
 plot_decision_boundary(linear_regression, X2, y2, "Linear Regression - Dataset 2", "linear_regression_dataset2.png")
 plot_decision_boundary(perceptron, X2, y2, "Perceptron - Dataset 2", "perceptron_dataset2.png")
 
-# 5. Analysis (in a markdown or text file)
 analysis = """
 ### Model Comparison Analysis
 

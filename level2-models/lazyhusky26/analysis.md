@@ -4,12 +4,12 @@
 **Dataset 1 (Linearly Separable):**
 
 - Linear Regression Accuracy: 0.8716666666666667
-- Perceptron Accuracy: 0.52
+- Perceptron Accuracy: 0.8433333333333334
 
 **Dataset 2 (Non-Linearly Separable):**
 
 - Linear Regression Accuracy: 0.79125
-- Perceptron Accuracy: 0.50125
+- Perceptron Accuracy: 0.79625
 
 ### Observations:
 
