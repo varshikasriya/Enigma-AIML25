@@ -61,9 +61,9 @@ class LinearRegression(BaseModel):
         """
         # weight init to be done
         if self.weights is None:
-            self.weights = np.random.randn(self.in_features, self.out_features)
+            self.weights = np.random.randn(self.out_features, self.in_features)
         if self.bias_term and self.bias is None:
-            self.bias = np.zeros((1, self.out_features))
+            self.bias = np.zeros(self.out_features)
 
         out = {}  # return dict
         if self._training:
