@@ -29,7 +29,9 @@ def load_csv(
     """
     if chunk_size is None:
         data = pd.read_csv(f_path).values
-        return torch.from_numpy(data) if return_tensors else data
+        if return_tensors:
+            return torch.from_numpy(data.astype(np.float32))
+        return data
 
     if cache_dir is None:
         cache_dir = os.path.splitext(f_path)[0] + "_chunks"
@@ -45,7 +47,10 @@ def load_csv(
     def chunk_loader():
         for chunk_file in chunk_files:
             arr = np.load(chunk_file)
-            yield torch.from_numpy(arr) if return_tensors else arr
+            if return_tensors:
+                yield torch.from_numpy(arr.astype(np.float32))
+            else:
+                yield arr
 
     return chunk_loader
 
