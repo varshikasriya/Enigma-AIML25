@@ -35,9 +35,10 @@ def l1norm(arr):
     total=0
     for x in arr:
       total+=abs(x)
+    normarr=[]
     for x in arr:
-      norm.append(x/total)
-    return norm
+      normarr.append(x/total)
+    return normarr
 
 #l2 norm
 def l2norm(arr):
