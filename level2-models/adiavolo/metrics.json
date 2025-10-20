@@ -1,0 +1,48 @@
+{
+  "runs": [
+    {
+      "timestamp": "2025-10-20T19:20:13",
+      "dataset": "binary_classification",
+      "model": "linear_regression",
+      "accuracy": 0.9,
+      "time_to_convergence_sec": 0.024558299999625888,
+      "time_per_prediction_us": 0.9022249999664684,
+      "n_iters": 34,
+      "converged": true,
+      "final_loss": 0.12368606411184037
+    },
+    {
+      "timestamp": "2025-10-20T19:20:15",
+      "dataset": "binary_classification",
+      "model": "perceptron",
+      "accuracy": 0.7333333333333333,
+      "time_to_convergence_sec": 1.340644899999461,
+      "time_per_prediction_us": 0.9552333334189218,
+      "n_iters": 2000,
+      "converged": false,
+      "mistakes_last_epoch": 88
+    },
+    {
+      "timestamp": "2025-10-20T19:20:15",
+      "dataset": "binary_classification_non_lin",
+      "model": "linear_regression",
+      "accuracy": 0.7625,
+      "time_to_convergence_sec": 0.033363200000167126,
+      "time_per_prediction_us": 0.9496874999967986,
+      "n_iters": 33,
+      "converged": true,
+      "final_loss": 0.15258910032069278
+    },
+    {
+      "timestamp": "2025-10-20T19:20:17",
+      "dataset": "binary_classification_non_lin",
+      "model": "perceptron",
+      "accuracy": 0.75,
+      "time_to_convergence_sec": 1.855505899999116,
+      "time_per_prediction_us": 0.9186312499878113,
+      "n_iters": 2000,
+      "converged": false,
+      "mistakes_last_epoch": 169
+    }
+  ]
+}
