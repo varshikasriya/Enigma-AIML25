@@ -49,7 +49,7 @@ All data-related work goes here: loading, processing, storing, and more.
 
 **`data/preprocessing.py`**: functions like `normalize`, `standard`, and `compose` will go here. Once `augment.py` is up and running, functionality from augment.py will also be included in preprocessing.py.
 
-**`data/augment.py`** (work in progress): all data-augmentation functions go here. Functions including resize-image, shuffle-samples, noise injection, color jittering, etc.
+**`data/augment.py`** (work in progress): all data-augmentation functions go here. Functions like resize-image, shuffle-samples, noise injection, color jittering, etc.
 
 > Often, buggy models are a result of logical bugs in this layer ;)
 
