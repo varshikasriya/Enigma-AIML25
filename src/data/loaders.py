@@ -24,7 +24,7 @@ def load_csv(
         cache_dir (Optional[str]): Directory to store chunked files.
 
     Returns:
-        np.ndarray or torch.Tensor: Loaded data.
+        np.ndarray or torch.Tensor: Loaded data. If `return_tensors` is True, the data is returned as a `torch.Tensor` with dtype `torch.float32`.
         If data is chunked, returns a generator yielding chunks from cache_dir.
     """
     if chunk_size is None:
