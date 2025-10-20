@@ -138,9 +138,10 @@ def main():
         description="Train and compare Linear Regression vs Perceptron",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
-    parser.add_argument("--data", default="datasets/binary_classification.csv", 
+    # Update default paths 
+    parser.add_argument("--data", default="../../datasets/binary_classification.csv", 
                        help="Path to binary classification dataset")
-    parser.add_argument("--outdir", default="level2-models/SamyuktaGade",
+    parser.add_argument("--outdir", default="../../results",
                        help="Output directory for results")
     parser.add_argument("--seed", type=int, default=42, 
                        help="Random seed")
