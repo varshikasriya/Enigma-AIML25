@@ -127,6 +127,7 @@ class DecisionTreeRegressor(BaseModel):
         Returns:
             np.ndarray: The predicted continuous values.
         """
+        assert self.is_trained, "Call .fit() before .predict()"
         return self.predict(X)
 
     def predict(self, X):
