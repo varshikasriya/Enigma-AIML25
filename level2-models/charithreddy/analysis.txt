@@ -1,0 +1,15 @@
+Level 2 Analysis - Charith Reddy
+--------------------------------
+Linear Regression Accuracy: 0.990
+Linear Regression Train Time: 0.0098s
+Linear Regression Prediction Time: 0.000002s
+
+Perceptron Accuracy: 0.990
+Perceptron Train Time: 4.5941s
+Perceptron Prediction Time: 0.000050s
+
+Observations:
+- Linear Regression treats output as continuous, then thresholded for classification.
+- Perceptron updates weights only for misclassified samples; better for discrete classes.
+- Training time depends on number of features and epochs.
+- Accuracy may differ depending on dataset separability.
