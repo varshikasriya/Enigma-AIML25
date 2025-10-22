@@ -79,6 +79,11 @@ class BaseModel:
         """
         self._is_trained = val
 
+    @property
+    def is_trained(self) -> bool:
+        """Returns the trained status of the model."""
+        return self._is_trained
+
     def forward():
         """BaseModel forward method. To be overridden by the child class."""
         raise NotImplementedError("Fit method must be implemented by the subclass.")

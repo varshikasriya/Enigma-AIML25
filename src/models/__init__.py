@@ -4,6 +4,7 @@ from .perceptron import Perceptron
 from .logistic_regression import LogisticRegression
 from .decision_tree_classifier import DecisionTreeClassifier
 from .svr import SVR
+from .decision_tree_regressor import DecisionTreeRegressor
 
 __all__ = [
     "BaseModel",
@@ -12,4 +13,5 @@ __all__ = [
     "LogisticRegression",
     "DecisionTreeClassifier",
     "SVR",
+    "DecisionTreeRegressor",
 ]

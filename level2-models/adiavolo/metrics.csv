@@ -1,0 +1,5 @@
+timestamp,dataset,model,accuracy,time_to_convergence_sec,time_per_prediction_us,n_iters,converged,final_loss,mistakes_last_epoch
+2025-10-20T19:20:13,binary_classification,linear_regression,0.9,0.024558299999625888,0.9022249999664684,34,True,0.12368606411184037,
+2025-10-20T19:20:15,binary_classification,perceptron,0.7333333333333333,1.340644899999461,0.9552333334189218,2000,False,,88
+2025-10-20T19:20:15,binary_classification_non_lin,linear_regression,0.7625,0.033363200000167126,0.9496874999967986,33,True,0.15258910032069278,
+2025-10-20T19:20:17,binary_classification_non_lin,perceptron,0.75,1.855505899999116,0.9186312499878113,2000,False,,169

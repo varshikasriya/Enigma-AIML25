@@ -51,14 +51,14 @@ class LogisticRegression(BaseModel):
         """
         # weight init
         if self.weights is None:
-            self.weights = np.random.randn(1, self.in_features)
+            self.weights = np.random.randn(self.in_features)
         if self.bias_term and self.bias is None:
-            self.bias = np.zeros(1)
+            self.bias = 0.0
         
         out = {}  # return dict
 
         # calculate logits
-        logits = Xb @ self.weights.T
+        logits = Xb @ self.weights
         if self.bias_term:
             logits += self.bias
         
@@ -68,7 +68,7 @@ class LogisticRegression(BaseModel):
 
         # get predictions
         predictions = (probabilities >= 0.5).astype(int)
-        out["predictions"] = predictions
+        out["y_pred"] = predictions
 
         if yb is not None and loss_fn is not None:
             loss = loss_fn(probabilities, yb)
