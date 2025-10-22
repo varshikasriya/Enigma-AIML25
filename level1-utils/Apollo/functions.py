@@ -35,3 +35,32 @@ def cosine_similarity(vec_a, vec_b):
     
     return dot_prod / (magnitude_a * magnitude_b)
 
+# Normalization (L1, L2, Min-Max)
+# Min-Max Normalization
+def minmax(x):
+    norm=[]
+    for i in x:
+        norm.append((i-min(x))/(max(x)-min(x)))
+    return norm
+
+# L1 Normalization
+def l1(x):
+    norm=[]
+    for i in x:
+        norm.append(i/sum(abs(i) for i in x))
+    return norm
+
+# L2 Normalization
+def l2(x):
+    norm=[]
+    for i in x:
+        norm.append(i/math.sqrt(sum(i**2 for i in x)))
+    return norm
+
+# Heuristic function
+def heuristic(a, b):
+    count=0
+    for i in range(4):
+        if a[i]!=b[i]:
+            count+=1
+    return count
