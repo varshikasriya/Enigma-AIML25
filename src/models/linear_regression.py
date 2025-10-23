@@ -64,8 +64,9 @@ class LinearRegression(BaseModel):
             self.weights = np.random.randn(self.out_features, self.in_features)
         if self.bias_term and self.bias is None:
             self.bias = np.zeros(self.out_features)
-
+        
         out = {}  # return dict
+
         if self._training:
             # training logic here, like:
             # weight init and bias init (if bias_term is True)
@@ -73,11 +74,20 @@ class LinearRegression(BaseModel):
             # optimization logic here
             # logging logic here
             # if log_speed is some int, print average loss, accuracy, etc every log_speed epochs
+            y_pred = Xb @ self.weights.T
+            if self.bias_term:
+                y_pred += self.bias
+            out["y_pred"] = y_pred
+            if yb is not None and loss_fn is not None:
+                loss = loss_fn(y_pred, yb)
+                out["loss"] = loss
             self._is_trained = False
-            pass
             # return the return_logs
         else:
             # inference logic here
-            pass
+            y_pred = Xb @ self.weights.T
+            if self.bias_term:
+                y_pred += self.bias
+            out["y_pred"] = y_pred
         
         return out
