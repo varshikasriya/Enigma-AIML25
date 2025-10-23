@@ -1,0 +1,22 @@
+{
+    "linear_classifier_on_linearly_separable": {
+        "accuracy": 0.8716666666666667,
+        "time_to_convergence_sec": 0.09880805504508317,
+        "time_per_prediction_sec": 1.09383351324747e-07
+    },
+    "perceptron_mlp_on_linearly_separable": {
+        "accuracy": 0.905,
+        "time_to_convergence_sec": 0.9932582280016504,
+        "time_per_prediction_sec": 7.529867192109426e-07
+    },
+    "linear_classifier_on_non_linearly_separable": {
+        "accuracy": 0.79125,
+        "time_to_convergence_sec": 0.13327804603613913,
+        "time_per_prediction_sec": 1.0153875336982309e-07
+    },
+    "perceptron_mlp_on_non_linearly_separable": {
+        "accuracy": 0.86625,
+        "time_to_convergence_sec": 1.3250223670038395,
+        "time_per_prediction_sec": 7.566537533421069e-07
+    }
+}
