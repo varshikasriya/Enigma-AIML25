@@ -1,0 +1,26 @@
+{
+    "linear_regression": {
+        "dataset_A": {
+            "accuracy": 0.79125,
+            "convergence_time": 0.008996963500976562,
+            "time_per_prediction": 0.0
+        },
+        "dataset_B": {
+            "accuracy": 0.8716666666666667,
+            "convergence_time": 0.010994911193847656,
+            "time_per_prediction": 0.0
+        }
+    },
+    "perceptron": {
+        "dataset_A": {
+            "accuracy": 0.79625,
+            "convergence_time": 2.4213852882385254,
+            "time_per_prediction": 0.0
+        },
+        "dataset_B": {
+            "accuracy": 0.8433333333333334,
+            "convergence_time": 1.6801011562347412,
+            "time_per_prediction": 0.0
+        }
+    }
+}
