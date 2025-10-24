@@ -45,24 +45,20 @@ class SVR(BaseModel):
             error = y - y_pred
             
             # Gradients
-            dw = np.zeros(n_features)
+            # Regularization part
+            dw = self.w
             db = 0
             
-            # Regularization part
-            dw += self.w
+            # Loss part 
+            loss_indices_pos = np.where(error > self.epsilon)[0]
+            loss_indices_neg = np.where(error < -self.epsilon)[0]
+
+            dw -= self.C * np.sum(X[loss_indices_pos], axis=0)
+            dw += self.C * np.sum(X[loss_indices_neg], axis=0)
             
-            # Loss part
-            margin_error_pos = error - self.epsilon
-            margin_error_neg = -error - self.epsilon
-            
-            for i in range(n_samples):
-                if margin_error_pos[i] > 0:
-                    dw += -self.C * X[i]
-                    db += -self.C
-                elif margin_error_neg[i] > 0:
-                    dw += self.C * X[i]
-                    db += self.C
-            
+            db -= self.C * len(loss_indices_pos)
+            db += self.C * len(loss_indices_neg)
+
             # Update weights and bias
             self.w -= self.lr * dw / n_samples
             self.b -= self.lr * db / n_samples
@@ -79,7 +75,6 @@ class SVR(BaseModel):
         Returns:
             np.ndarray: The predicted target values.
         """
-        assert self.is_trained, "Call .fit() before .predict()"
         return self.predict(X)
 
     def predict(self, X):
@@ -92,4 +87,5 @@ class SVR(BaseModel):
         Returns:
             np.ndarray: The predicted target values.
         """
+        assert self.is_trained, "Call .fit() before .predict()"
         return np.dot(X, self.w) + self.b
