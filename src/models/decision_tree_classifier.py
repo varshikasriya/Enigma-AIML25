@@ -118,7 +118,8 @@ class DecisionTreeClassifier(BaseModel):
     def _entropy(self, y):
         hist = np.bincount(y)
         ps = hist / len(y)
-        return -np.sum([p * np.log(p) for p in ps if p > 0])
+        epsilon = 1e-8
+        return -np.sum([p * np.log(p + epsilon) for p in ps if p > 0])
 
     def _most_common_label(self, y):
         counter = Counter(y)
@@ -135,6 +136,7 @@ class DecisionTreeClassifier(BaseModel):
         Returns:
             np.ndarray: The predicted class labels.
         """
+        assert self.is_trained, "Call .fit() before .predict()"
         return self.predict(X)
 
     def predict(self, X):
